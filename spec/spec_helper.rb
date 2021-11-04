@@ -12,6 +12,18 @@
 # the additional setup, and require it from the spec files that actually need
 # it.
 #
+
+ENV['RACK_ENV'] = 'test'
+# require our Sinatra app file
+require File.join(File.dirname(__FILE__), '..', 'app.rb')
+
+require 'capybara'
+require 'capybara/rspec'
+require 'rspec'
+
+# tell capybara about our app class
+Capybara.app = Battle
+
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
@@ -43,19 +55,6 @@ RSpec.configure do |config|
   # inherited by the metadata hash of host groups and examples, rather than
   # triggering implicit auto-inclusion in groups with matching metadata.
   config.shared_context_metadata_behavior = :apply_to_host_groups
-
-
-  ENV['RACK_ENV'] = 'test'
-  # require our Sinatra app file
-  require File.join(File.dirname(__FILE__), '..', 'app.rb')
-
-  require 'capybara'
-  require 'capybara/rspec'
-  require 'rspec'
-
-  # tell capybara about our app class
-  Capybara.app = Battle
-
 
 
 # The settings below are suggested to provide a good initial experience

@@ -16,7 +16,4 @@ feature 'Enter names' do
     click_button 'Submit'
     expect(current_path).to eq '/play'
   end
-
-
-
 end 
